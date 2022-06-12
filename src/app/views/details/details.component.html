@@ -1,0 +1,37 @@
+<div class="container">
+  <div *ngFor="let image of pageinfo.images; let i = index" [attr.data-index]="i" class="preview">
+    <img class="preview hide" id="preview{{i}}" [src]="pageinfo.images[i]">
+  </div>
+  <div *ngFor="let action of pageinfo.actions; let i = index" [attr.data-index]="i">
+    <span [ngStyle]="{'top': (action.yPos+'px'), 'left': (action.xPos+'px')}" class="dot hide" id="event{{i}}" *ngIf="(action.type === 'ClickEvent')" ></span>
+  </div>
+  <footer>
+
+    <div class = "btn-group2">
+      <button class="NextPage"(click)="nextPage()" type="button">NextPage</button>
+    <button class="PrevPage"(click)="prevPage()" type="button">PreviousPage</button>
+
+    </div>
+    <div class="both">
+    <input type="range" (change)="sliderEvent()" min="0" max="{{pageinfo.actions.length-1}}" id="slider">
+
+       <div class="btn-group">
+         <div style = "position:relative; left:139px; bottom:2px; ">
+         <button class="Prev"(click)="prevAction()" type="button">	&#8592;</button>
+        <button class="Next"(click)="nextAction()" type="button">	&#8594;</button>
+           </div>
+       </div>
+
+     </div>
+    <div *ngFor="let action of pageinfo.actions; let i = index" [attr.data-index]="i">
+      <div *ngIf="(action.type === 'KeyEvent')"> <h1 class="key hide" id="event{{i}}">{{action.key}} </h1></div>
+
+      <div  *ngIf="(action.type === 'ClickEvent')"> <h2 class = "click hide" id="event{{i}}"> &#9750; </h2></div>
+      <div id="time{{i}}" class="time hide"> {{action.time}}</div>
+    </div>
+  </footer>
+
+
+
+</div>
+<!-- <button (click)="nextPage()" )type="button">NextPage</button> !-->

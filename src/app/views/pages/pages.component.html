@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> Pages</h1>
+  <h2> The result of the logged data:</h2>
+  <ul>
+    <li *ngFor="let pageinfo of data; let i = index" [attr.data-index]="i">
+      <a href="details/{{i}}">Url: {{pageinfo.pageUrl}}</a>
+      <p>Time spent: {{pageinfo.timeSpent}}</p>
+
+    </li>
+  </ul>
+</div>
